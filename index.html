@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #ffffff;
+            background-image: url('background-picture.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+        h1{
+            text-align: center;
+        }
+
+        #weather-container {
+            margin-top: 10px;
+            align-items: center;
+        }
+
+        #locationInput {
+            padding: 10px;
+            border: 1px solid #92c7e9;
+            border-radius: 15px;
+            margin-right: 10px;
+            align-items: center;
+        }
+
+        #getWeatherBtn {
+            padding: 10px 20px;
+            background-color: #92c7e9;
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            margin-right: 100px;
+            margin-top: 20px;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #getWeatherBtn:hover{
+            background-color: #b7e0f2;
+        }
+
+        #weather-info {
+            display: inline-block;
+            align-items: center;
+            background-color: #dbf3ff;
+            padding: 10px;
+            border: 1px solid #67b5e6;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+             margin-top: 20px; /* Adjusted margin to the left */
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather App</h1>
+
+    <div id="weather-container">
+        <input type="text" id="locationInput" placeholder="Enter location">
+        <button onclick="getWeather()" id="getWeatherBtn">Get Weather</button>
+    </div>
+    <div id="weather-info"></div>
+
+    <script>
+        async function getWeather() {
+            const apiKey = 'Use your api-key';
+            const locationInput = document.getElementById('locationInput').value;
+
+            if (locationInput.trim() === '') {
+                alert('Please enter a location.');
+                return;
+            }
+
+            const url = `https://open-weather13.p.rapidapi.com/city/${locationInput}`;
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': apiKey,
+                    'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
+                }
+            };
+
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+                displayWeather(result);
+            } catch (error) {
+                console.error('Error fetching weather data:', error);
+                alert('You might entered wrong location or error in fetching weather data. Please try again.');
+            }
+        }
+
+        function displayWeather(data) {
+            const weatherInfo = document.getElementById('weather-info');
+            weatherInfo.innerHTML = '';
+
+            const cityName = document.createElement('h2');
+            cityName.textContent = data.name;
+
+            const temperature = document.createElement('p');
+            temperature.textContent = `Temperature: ${data.main.temp}°F`;
+
+            const description = document.createElement('p');
+            description.textContent = `Weather: ${data.weather[0].description}`;
+
+            const humidity = document.createElement('p');
+            humidity.textContent = `Humidity: ${data.main.humidity}%`;
+
+            const windSpeed = document.createElement('p');
+            windSpeed.textContent = `Wind Speed: ${data.wind.speed} m/s`;
+
+            weatherInfo.appendChild(cityName);
+            weatherInfo.appendChild(temperature);
+            weatherInfo.appendChild(description);
+            weatherInfo.appendChild(humidity);
+            weatherInfo.appendChild(windSpeed);
+        }
+    </script>
+</body>
+</html>
