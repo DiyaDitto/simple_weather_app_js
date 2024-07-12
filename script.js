@@ -14,7 +14,7 @@ async function getWeather() {
     }
 
     try {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${apiKey}`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${6c4b8b12818b280890874339e4ef4a6c}`);
         const data = await response.json();
         displayWeather(data);
     } catch (error) {
