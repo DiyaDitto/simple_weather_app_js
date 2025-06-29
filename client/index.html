@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather Now</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🌦️ Weather Now</h1>
+    <div class="input-section">
+      <input type="text" id="locationInput" placeholder="Enter a city..." />
+      <button id="getWeatherBtn">Search</button>
+    </div>
+    <div class="toggle">
+      <label><input type="checkbox" id="unitToggle" /> °C / °F</label>
+    </div>
+    <div id="weather-info" class="card"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
