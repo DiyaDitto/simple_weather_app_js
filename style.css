@@ -1,38 +1,114 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f0f0f0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#weather-container {
-    margin-top: 20px;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #dfe9f3, #ffffff);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: #333;
+}
+
+.app-container {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  max-width: 500px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+h1 {
+  margin-bottom: 1.2rem;
+  color: #2f3e46;
+  font-size: 1.9rem;
+}
+
+.search-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
 #locationInput {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    width: 50%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 60%;
+  min-width: 200px;
+  font-size: 1rem;
 }
 
-#getWeatherBtn {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+#locationInput:focus {
+  border-color: #89c2d9;
+  box-shadow: 0 0 6px rgba(137, 194, 217, 0.3);
+  outline: none;
 }
 
-#getWeatherBtn:hover {
-    background-color: #3e8e41;
+button {
+  padding: 12px 16px;
+  border: none;
+  background: linear-gradient(to right, #76c7c0, #60a5a3);
+  color: white;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
-#weather-info {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+button.secondary {
+  background: #7d8ca3;
+}
+
+button:hover {
+  transform: scale(1.03);
+}
+
+.weather-card {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+  transition: 0.3s ease;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.weather-card:hover {
+  transform: translateY(-4px);
+}
+
+.weather-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+footer {
+  margin-top: 2rem;
+  color: #888;
+  font-size: 0.9rem;
+  text-align: center;
 }

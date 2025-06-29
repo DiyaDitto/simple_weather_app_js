@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Weather App</h1>
-    <div id="weather-container">
-        <input type="text" id="locationInput" placeholder="Enter location">
-        <button id="getWeatherBtn">Get Weather</button>
-    </div>
-    <div id="weather-info"></div>
 
-    <script src="script.js"></script>
+  <div class="app-container">
+    <h1>🌍 Weather Forecast</h1>
+    <div class="search-box">
+      <input type="text" id="locationInput" placeholder="Enter location..." />
+      <button id="getWeatherBtn">Search</button>
+      <button id="geoWeatherBtn" class="secondary">📍 Use My Location</button>
+    </div>
+    <div id="weather-info" class="weather-card"></div>
+  </div>
+
+  <footer>
+    Made with ❤️ by Diya
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
